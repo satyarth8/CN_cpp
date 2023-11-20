@@ -21,7 +21,19 @@ node* add_at_start(struct node* head, int value)
     head->prev=temp;
     return temp;
 }
-
+node* add_at_end(struct node* head, int value)
+{
+    node* temp=new node;
+    temp->data=value;
+    node* ctr=head;
+    while(ctr->next!=nullptr){
+        ctr=ctr->next;
+    }
+    ctr->next=temp;
+    temp->prev=ctr;
+    temp->next=nullptr;
+    return head;
+}
 int main() {
     struct node* head= (struct node*) malloc(sizeof(struct node));
     insert_to_empty_dll(head,23);
