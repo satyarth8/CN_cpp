@@ -1,0 +1,1 @@
+    node* temp=new node;

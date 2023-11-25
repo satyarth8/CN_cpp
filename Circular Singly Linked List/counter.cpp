@@ -29,13 +29,6 @@ node* add_at_end(node* tail, int value)
     tail=temp;
     return tail;// temp is the new end so we can return temp too
 }
-node* delete_first_node(node* tail)
-{
-    node* temp=tail->next;
-    tail->next=temp->next;
-    free(temp);
-    return tail;
-}
 void print(node* tail)
 {
     node* ptr = tail->next;
@@ -63,8 +56,8 @@ int main() {
         cin >> val;
         tail = add_at_end(tail, val);
     }
-    cout << "Circular Linked List after deleting the first node:" << endl;
-    tail=delete_first_node(tail);
+    cout << "Circular Linked List:" << endl;
+    
     print(tail);
 
     return 0;
