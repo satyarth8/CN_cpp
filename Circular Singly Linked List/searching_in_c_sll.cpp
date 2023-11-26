@@ -29,16 +29,19 @@ node* add_at_end(node* tail, int value)
     tail=temp;
     return tail;// temp is the new end so we can return temp too
 }
-int count_nodes(node* tail)
+int find_index(node* tail, int val)
 {
-    int counter =1;
-    node* temp=tail;
-    while(temp!=tail)
-    {
-        counter++;
+    int index=0;
+    node* temp=tail->next;
+    do{
+        if(temp->data==val)
+        {
+            return index;
+        }
+        index++;
         temp=temp->next;
-    }
-    return counter;
+    }while(temp!=temp->next);
+    return -1;
 }
 void print(node* tail)
 {
@@ -70,7 +73,10 @@ int main() {
     cout << "Circular Linked List:" << endl;
     
     print(tail);
-    cout<<"The counted no. of nodes is : "<<count_nodes(tail);
-
+    int find_val;
+    cout<<"Enter the value you want to find :";
+    cin>>find_val;
+    cout<<"Value found at index :"<<find_index(tail,find_val);
+    return 0;
     return 0;
 }
