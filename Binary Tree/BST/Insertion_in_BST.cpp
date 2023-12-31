@@ -44,6 +44,19 @@ struct node* insert_nonRec(struct node* root, int ikey)
     return root;
 }
 
+struct node* insert_Rec(struct node* root, int ikey)
+{
+    if(root== nullptr)
+        root=createNode(ikey);
+    else if(ikey<root->data)
+        root->left = insert_Rec(root->left,ikey);
+    else if(ikey>root->data)
+        root->right = insert_Rec(root->right,ikey);
+    else    
+        cout<<"Duplicate Key";
+    return root;
+}
+
 void printBST(struct node* root)
 {
     if(root==nullptr)
@@ -56,10 +69,10 @@ void printBST(struct node* root)
 int main()
 {
     struct node* root=nullptr;
-    int arr[8]={67,34,80,10,55,45,60,90};
-    for( int i=0;i<8;i++)
+    int arr[9]={67,34,80,10,55,45,45,60,90};
+    for( int i=0;i<9;i++)
     {
-        root=insert_nonRec(root,arr[i]);
+        root=insert_Rec(root,arr[i]);
     }
     printBST(root);
     return 0;
