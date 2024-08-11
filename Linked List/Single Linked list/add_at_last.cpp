@@ -2,30 +2,29 @@
 using namespace std;
 struct node
 {
-    int data;// structure prototype
+    int data;
     struct node *link; 
 };
-void add_at_end(struct node* head, int value) {
+void append(struct node* head, int value) {
 
-    if (head == nullptr) // if no data present or ll is empty
+    if (head == nullptr)
         cout << "Linked list is empty";
     struct node* ptr = nullptr;
-    // made a temp struct and gave the data the value and link as null as adding at the end
+  
     struct node* temp=(struct node*) malloc(sizeof(struct node ));
     temp->data=value; 
     temp->link=nullptr;
     ptr = head;
-    // ptr is a structure pointer 
-    while (ptr->link != nullptr) // ptr pointign to each of the link 
+
+    while (ptr->link != nullptr)  
     {
         ptr=ptr->link;
-        // when at the last link get out of loop
+       
     }
-    // to the last node give the link the addr of the temp which had the value data
     ptr->link=temp;
 }
-void count_of_node(struct node* head) 
-{ // just casually printing all the data
+void print(struct node* head) 
+{ 
     if (head == nullptr)
         cout << "Linked list is empty";
     struct node* ptr = nullptr;
@@ -36,7 +35,7 @@ void count_of_node(struct node* head)
     }
 }
 int main() {
-    // Your code here
+    
     struct node *head =(struct node* ) malloc(sizeof(struct node));
     head->data=11;
     head->link=NULL;
@@ -50,9 +49,12 @@ int main() {
     current->data=24;
     current->link=NULL;
     head->link->link=current;
-    count_of_node(head);
-    add_at_end(head,23);
-    count_of_node(head);
+    
+    printf("before append :\n");
+    print(head);
+    printf("after append :\n");
+    append(head,23);
+    print(head);
     delete current;
     delete head;
     return 0;

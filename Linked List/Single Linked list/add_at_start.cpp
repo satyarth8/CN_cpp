@@ -16,7 +16,7 @@ void print(struct node *head)
 
     }
 }
-struct node* add_at_start(struct node *head, int value)
+struct node* push(struct node *head, int value)
 {
     struct node *temp =(struct node*) malloc(sizeof(struct node));
     temp->data=value;
@@ -28,7 +28,8 @@ int main() {
     struct node *head = (struct node*) malloc(sizeof(struct node));
     head->data=23;
     head->link=nullptr;
-    head=add_at_start(head,233);
+
+    head=push(head,233);
     print(head);
     return 0;
 }
